@@ -2,6 +2,8 @@
 
 const validator = require('validator');
 const Article = require('../models/Article');
+const path = require('path');
+const fs = require('fs');
 
 const articleController = {}
 
@@ -192,4 +194,114 @@ articleController.delete = async(req, res) => {
 
 }
 
+articleController.upload = async(req, res) => {
+    // Configurar el modulo del connect multiparty en router
+
+    // Recoger archivo de la peticion
+    let fileName = 'La imagen no se pudo subir';
+    if (!req.files) {
+        return res.status(404).json({
+            status: 'error',
+            message: 'No hay ningun archivo seleccionado.'
+        });
+    }
+
+    // conseguir name y ext del file
+    const filePath = req.files.file0.path
+    fileName = path.basename(filePath);
+    const fileExt = fileName.split('.')[1];
+
+    // comprobar la extension, solo img
+    if (fileExt != 'jpg' && fileExt != 'png' && fileExt != 'jpeg' && fileExt != 'gif') {
+        // borrar archivo
+        fs.unlink(filePath, err => {
+            return res.status(400).json({
+                status: 'error',
+                message: 'Por favor asegurese que el archivo sea una imagen.'
+            });
+
+        });
+
+    } else {
+        try {
+            const id = req.params.id;
+            // Buscar el articulo, darle nombre a la img y actualizar
+            const article = await Article.findOneAndUpdate({ _id: id }, { image: fileName }, { new: true }).exec();
+
+            if (!article) {
+                fs.unlinkSync(filePath);
+                return res.status(400).json({
+                    status: 'error',
+                    message: 'No se puede subir la imagen en este articulo.'
+                })
+            }
+
+            return res.status(200).json({
+                status: 'ok',
+                article
+            })
+
+        } catch (error) {
+            fs.unlinkSync(filePath);
+            return res.status(500).json({
+                status: 'error',
+                message: 'Error en la peticion.'
+            })
+        }
+    }
+
+}
+
+articleController.getImage = async(req, res) => {
+    const fileName = req.params.id;
+    const imagePath = './upload/articles/' + fileName;
+
+    if (!fs.existsSync(imagePath)) {
+        return res.status(404).json({
+            status: 'error',
+            message: 'La image no existe.'
+        })
+    }
+
+
+    return res.status(200).sendFile(path.resolve(imagePath));
+}
+
+articleController.search = async(req, res) => {
+    try {
+        // sacar string a buscar
+        const token = req.params.token;
+
+        //find or
+        const articles = await Article.find({
+            '$or': [
+                { 'title': { "$regex": token, '$options': 'i' } },
+                { 'content': { "$regex": token, '$options': 'i' } }
+            ]
+        }).sort([
+            ['date', 'desc']
+        ]).exec();
+
+        if (!articles || articles.length < 1) {
+            return res.status(404).json({
+                status: 'error',
+                message: 'No hay Articulos para mostrar.'
+
+            })
+        }
+
+        return res.status(200).json({
+            status: 'ok',
+            articles
+
+        })
+
+    } catch (error) {
+        return res.status(500).json({
+            status: 'ok',
+            message: 'Error en la peticion.'
+
+        })
+    }
+}
 module.exports = articleController;
