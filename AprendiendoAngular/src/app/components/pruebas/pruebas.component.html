@@ -1,1 +1,6 @@
-<p>pruebas works!</p>
+<h2 class="subheader">Pagina de pruebas</h2>
+<div *ngIf="name && lastname">
+    <h3>El nombre es: {{name}} {{lastname}} </h3>
+</div>
+
+<button (click)="redirect()">Ir al formulario.</button>
