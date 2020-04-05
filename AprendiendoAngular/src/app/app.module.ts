@@ -18,6 +18,7 @@ import { ErrorComponent } from './components/error/error.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { EsPar } from './pipes/espar.pipe';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [
@@ -40,7 +41,8 @@ import { FormsModule } from '@angular/forms';
     imports: [
         BrowserModule,
         AppRoutingModule,
-        FormsModule
+        FormsModule,
+        HttpClientModule
     ],
     providers: [],
     bootstrap: [AppComponent]
