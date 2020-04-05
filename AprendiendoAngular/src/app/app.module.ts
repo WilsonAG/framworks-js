@@ -16,6 +16,7 @@ import { PageComponent } from './components/page/page.component';
 import { AppRoutingModule } from './app.routing';
 import { ErrorComponent } from './components/error/error.component';
 import { MovieComponent } from './components/movie/movie.component';
+import { EsPar } from './pipes/espar.pipe';
 
 @NgModule({
     declarations: [
@@ -32,7 +33,8 @@ import { MovieComponent } from './components/movie/movie.component';
         FormularioComponent,
         PageComponent,
         ErrorComponent,
-        MovieComponent
+        MovieComponent,
+        EsPar
     ],
     imports: [
         BrowserModule,

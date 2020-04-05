@@ -10,6 +10,7 @@ export class MoviesComponent implements OnInit, DoCheck, OnDestroy {
     public titulo: string;
     public movies: Movie[];
     public favorite: Movie;
+    public fecha: Date;
 
     constructor() {
         this.titulo = 'Componente de peliculas';
@@ -35,7 +36,7 @@ export class MoviesComponent implements OnInit, DoCheck, OnDestroy {
                 'https://es.web.img2.acsta.net/pictures/16/03/04/15/47/480948.jpg'
             ),
         ];
-
+        this.fecha = new Date(2018, 8, 12);
         console.log(this.movies);
     }
     ngOnDestroy(): void {

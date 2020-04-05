@@ -5,8 +5,11 @@
 
         <div *ngIf="favorite; else default">
             <h2 class="subheader">Pelicula Favorita</h2>
-            {{favorite.title}}
-            <span>{{favorite.year}}</span>
+            {{favorite.title | uppercase}}
+            <p>{{favorite.year | date: 'full'}}</p>
+            <p>{{favorite.year | esPar}}</p>
+            <h5> {{fecha | date: 'short'}} </h5>
+
         </div>
         <ng-template #default>
             <h2 class="subheader">Peliculas</h2>
