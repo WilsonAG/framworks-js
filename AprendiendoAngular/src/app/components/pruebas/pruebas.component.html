@@ -1,6 +1,15 @@
 <h2 class="subheader">Pagina de pruebas</h2>
-<div *ngIf="name && lastname">
-    <h3>El nombre es: {{name}} {{lastname}} </h3>
+<div *ngIf="name && lastname; then params else noParams">
 </div>
 
-<button (click)="redirect()">Ir al formulario.</button>
+<ng-template #params>
+    <h3>El nombre es: {{name}} {{lastname}} </h3>
+
+</ng-template>
+<ng-template #noParams>
+
+    <h3>No hay nada por mostrar </h3>
+</ng-template>
+
+
+<button (click)="redirect()">Llenar datos.</button>

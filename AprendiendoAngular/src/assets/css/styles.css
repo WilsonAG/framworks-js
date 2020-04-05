@@ -280,6 +280,7 @@ textarea:focus {
 
 .article-item .image-wrap img {
     height: 100%;
+    width: 100%;
     text-align: center;
 }
 
@@ -415,4 +416,22 @@ textarea:focus {
     .slider.slider-small h1 {
         padding-top: 35px;
     }
+}
+
+.year-green {
+    background: green;
+    color: white;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    width: 120px;
+}
+
+.year-red {
+    background: red;
+    color: white;
+    padding: 5px;
+    display: block;
+    text-align: center;
+    width: 120px;
 }
