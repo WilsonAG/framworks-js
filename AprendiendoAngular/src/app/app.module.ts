@@ -17,6 +17,7 @@ import { AppRoutingModule } from './app.routing';
 import { ErrorComponent } from './components/error/error.component';
 import { MovieComponent } from './components/movie/movie.component';
 import { EsPar } from './pipes/espar.pipe';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -38,7 +39,8 @@ import { EsPar } from './pipes/espar.pipe';
     ],
     imports: [
         BrowserModule,
-        AppRoutingModule
+        AppRoutingModule,
+        FormsModule
     ],
     providers: [],
     bootstrap: [AppComponent]
