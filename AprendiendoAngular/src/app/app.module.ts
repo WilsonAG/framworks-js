@@ -15,6 +15,7 @@ import { FormularioComponent } from './components/formulario/formulario.componen
 import { PageComponent } from './components/page/page.component';
 import { AppRoutingModule } from './app.routing';
 import { ErrorComponent } from './components/error/error.component';
+import { MovieComponent } from './components/movie/movie.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +31,8 @@ import { ErrorComponent } from './components/error/error.component';
         BlogComponent,
         FormularioComponent,
         PageComponent,
-        ErrorComponent
+        ErrorComponent,
+        MovieComponent
     ],
     imports: [
         BrowserModule,

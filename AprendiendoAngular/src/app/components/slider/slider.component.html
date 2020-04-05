@@ -1,4 +1,9 @@
-<div class="slider slider-big">
-    <h1>Maquetacion de Angular del Master de Frameworks de Js</h1>
-    <a href="#" class="btn-white">Ir al blog</a>
+<div class="slider" [ngClass]="{
+    'slider-big': !size || size === 'big',
+    'slider-small': size === 'small'
+}">
+    <h1>
+        {{name}}
+    </h1>
+    <a [routerLink]="['/blog']" class="btn-white" *ngIf="!size || size=== 'big'">Ir al blog</a>
 </div>

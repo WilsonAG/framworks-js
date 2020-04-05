@@ -1,15 +1,24 @@
-<h2 class="subheader">Pagina de pruebas</h2>
-<div *ngIf="name && lastname; then params else noParams">
+<app-slider [name]="'Pruebass'" [size]="'small'"></app-slider>
+
+<div class="center">
+    <section class="content">
+
+        <h2 class="subheader">Pagina de pruebas</h2>
+        <div *ngIf="name && lastname; then params else noParams">
+        </div>
+
+        <ng-template #params>
+            <h3>El nombre es: {{name}} {{lastname}} </h3>
+
+        </ng-template>
+        <ng-template #noParams>
+
+            <h3>No hay nada por mostrar </h3>
+        </ng-template>
+
+
+        <button (click)="redirect()">Llenar datos.</button>
+    </section>
+    <app-sidebar></app-sidebar>
 </div>
-
-<ng-template #params>
-    <h3>El nombre es: {{name}} {{lastname}} </h3>
-
-</ng-template>
-<ng-template #noParams>
-
-    <h3>No hay nada por mostrar </h3>
-</ng-template>
-
-
-<button (click)="redirect()">Llenar datos.</button>
+<div class="clearfix"></div>
