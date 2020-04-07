@@ -1,3 +1,5 @@
+import { config } from '../services/config.service';
+
 export class Article {
 
 
@@ -8,4 +10,5 @@ export class Article {
         public image: string,
         public date: any
     ) { }
+
 }

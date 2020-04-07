@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ArticleService } from '../../services/article.service';
 import { Article } from '../../models/article';
-import { config } from '../../services/config.service';
 
 
 
@@ -32,9 +31,7 @@ export class BlogComponent implements OnInit {
 
     }
 
-    getImage(img: string) {
-        return `${config.uri + 'image/' + img}`;
-    }
+
 
 
 

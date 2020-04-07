@@ -18,8 +18,18 @@ export class ArticleService {
         return 'article service';
     }
 
-    getArticles(): Observable<any> {
-        return this._http.get(this.uri + 'articles');
+    getArticles(last: number = null): Observable<any> {
+        if (!last) {
+            return this._http.get(this.uri + 'articles');
+        }
+        return this._http.get(this.uri + 'articles/' + last);
+
     }
+
+    getArticle(id: string): Observable<any> {
+        return this._http.get(`${this.uri}article/${id}`);
+    }
+
+
 }
 

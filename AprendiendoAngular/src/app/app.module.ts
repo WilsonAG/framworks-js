@@ -19,6 +19,9 @@ import { MovieComponent } from './components/movie/movie.component';
 import { EsPar } from './pipes/espar.pipe';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ArticlesComponent } from './components/articles/articles.component';
+import { MomentModule } from 'angular2-moment';
+import { ArticleComponent } from './components/article/article.component';
 
 @NgModule({
     declarations: [
@@ -36,13 +39,16 @@ import { HttpClientModule } from '@angular/common/http';
         PageComponent,
         ErrorComponent,
         MovieComponent,
-        EsPar
+        EsPar,
+        ArticlesComponent,
+        ArticleComponent
     ],
     imports: [
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        HttpClientModule
+        HttpClientModule,
+        MomentModule
     ],
     providers: [],
     bootstrap: [AppComponent]
