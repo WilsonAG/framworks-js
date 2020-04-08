@@ -207,13 +207,13 @@ body {
 }
 
 .btn.btn-danger {
-    background-color: rgb(219, 219, 14);
+    background-color: rgb(214, 9, 9);
     color: white;
     text-decoration: none;
 }
 
 .btn.btn-warning {
-    background-color: rgb(214, 9, 9);
+    background-color: rgb(219, 219, 14);
     color: white;
     text-decoration: none;
 }
@@ -229,6 +229,7 @@ body {
 }
 
 input[type="text"],
+input[type="file"],
 textarea {
     width: 100%;
     min-height: 30px;
@@ -337,6 +338,11 @@ textarea:focus {
     border-bottom: 1px solid #eee;
     padding-bottom: 5px;
     text-transform: capitalize;
+}
+
+.image-wrap img {
+    width: 100%;
+    height: auto;
 }
 
 .article-detail .image-wrap {
@@ -458,4 +464,8 @@ textarea:focus {
     display: block;
     text-align: center;
     width: 120px;
+}
+
+.btn.up_btn.afu-attach-pin {
+    margin-bottom: 25px;
 }

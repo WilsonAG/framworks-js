@@ -37,7 +37,7 @@ articleController.save = async(req, res) => {
         // asignar valores al obj
         article.title = params.title;
         article.content = params.content;
-        article.image = null;
+        article.image = params.image ? params.image : null;
 
         // guardar el articulo
         const articleStored = await article.save();
@@ -196,6 +196,7 @@ articleController.delete = async(req, res) => {
 
 articleController.upload = async(req, res) => {
     // Configurar el modulo del connect multiparty en router
+    const id = req.params.id;
 
     // Recoger archivo de la peticion
     let fileName = 'La imagen no se pudo subir';
@@ -223,31 +224,37 @@ articleController.upload = async(req, res) => {
         });
 
     } else {
-        try {
-            const id = req.params.id;
-            // Buscar el articulo, darle nombre a la img y actualizar
-            const article = await Article.findOneAndUpdate({ _id: id }, { image: fileName }, { new: true }).exec();
+        if (id) {
+            try {
+                // Buscar el articulo, darle nombre a la img y actualizar
+                const article = await Article.findOneAndUpdate({ _id: id }, { image: fileName }, { new: true }).exec();
 
-            if (!article) {
+                if (!article) {
+                    fs.unlinkSync(filePath);
+                    return res.status(400).json({
+                        status: 'error',
+                        message: 'No se puede subir la imagen en este articulo.'
+                    })
+                }
+
+                return res.status(200).json({
+                    status: 'ok',
+                    article
+                })
+            } catch (error) {
                 fs.unlinkSync(filePath);
-                return res.status(400).json({
+                return res.status(500).json({
                     status: 'error',
-                    message: 'No se puede subir la imagen en este articulo.'
+                    message: 'Error en la peticion.'
                 })
             }
-
+        } else {
             return res.status(200).json({
                 status: 'ok',
-                article
-            })
-
-        } catch (error) {
-            fs.unlinkSync(filePath);
-            return res.status(500).json({
-                status: 'error',
-                message: 'Error en la peticion.'
-            })
+                fileName
+            });
         }
+
     }
 
 }
