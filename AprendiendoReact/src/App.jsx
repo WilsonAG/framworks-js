@@ -7,19 +7,22 @@ import Header from "./components/Header";
 import Slider from "./components/Slider";
 import Sidebar from "./components/Sidebar";
 import { Footer } from "./components/Footer";
-import SeccionPruebas from "./components/SeccionPruebas";
+import Peliculas from "./components/Peliculas";
 
 
 function App() {
     return (
         <div className="App">
             <Header />
-            <Slider></Slider>
+            <Slider
+                titulo="Maquetacion de ReactJs del Master de Frameworks de Js"
+                btn="Ver mas"
+            />
             <div className="center">
                 <section className="content">
-
-                    <SeccionPruebas></SeccionPruebas>
+                    <Peliculas></Peliculas>
                     {/*}
+                    <SeccionPruebas></SeccionPruebas>
                     <h2 className="subheader">ultimos articulos</h2>
                     <div id="articles">
                         <article className="article-item" id="article-item">
@@ -36,7 +39,7 @@ function App() {
 
                 </section>
                 <Sidebar></Sidebar>
-                <div class="clearfix"></div>
+                <div className="clearfix"></div>
                 <Footer></Footer>
             </div>
         </div>
