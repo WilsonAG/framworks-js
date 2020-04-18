@@ -85,6 +85,10 @@ body {
     color: var(--react-color);
 }
 
+.active {
+    border-bottom: 2px solid var(--react-color);
+}
+
 .clearfix {
     clear: both;
     float: none;

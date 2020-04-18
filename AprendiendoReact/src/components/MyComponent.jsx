@@ -12,6 +12,14 @@ class MyComponent extends Component {
 
         return (
             <React.Fragment>
+                {
+                    this.props.saludo &&
+                    <React.Fragment>
+                        <h1>Desde una prop</h1>
+                        <h3>{this.props.saludo}</h3>
+                    </React.Fragment>
+                }
+
                 <h1>{'Receta: ' + receta.nombre}</h1>
                 <h2>{'Calorias: ' + receta.calorias}</h2>
                 <ol>

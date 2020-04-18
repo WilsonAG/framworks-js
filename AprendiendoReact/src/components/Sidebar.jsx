@@ -4,10 +4,13 @@ export default class Sidebar extends Component {
     render() {
         return (
             <aside className="sidebar">
-                <div className="nav-blog sidebar-item">
-                    <h3>Puedes hacer esto</h3>
-                    <a href="f" className="btn btn-success">Crear articulo</a>
-                </div>
+                {
+                    this.props.blog &&
+                    <div className="nav-blog sidebar-item">
+                        <h3>Puedes hacer esto</h3>
+                        <a href="f" className="btn btn-success">Crear articulo</a>
+                    </div>
+                }
 
                 <div className="search sidebar-item">
                     <h3>buscador</h3>
