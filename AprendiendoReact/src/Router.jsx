@@ -7,6 +7,8 @@ import Header from './components/Header';
 import { Footer } from './components/Footer';
 import Home from './components/Home';
 import Blog from './components/Blog';
+import Formulario from './components/Fomulario';
+import Peliculas from './components/Peliculas';
 
 export default class Router extends Component {
     render() {
@@ -19,6 +21,8 @@ export default class Router extends Component {
                     <Route exact path="/" component={Home}></Route>
                     <Route exact path="/home" component={Home}></Route>
                     <Route exact path="/blog" component={Blog}></Route>
+                    <Route exact path="/formulario" component={Formulario}></Route>
+                    <Route exact path="/peliculas" component={Peliculas}></Route>
 
                     <Route exact path="/ruta-prueba" component={SeccionPruebas}></Route>
                     <Route exact path="/segunda-ruta" component={MyComponent}></Route>
