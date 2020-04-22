@@ -11,25 +11,23 @@ export default class Blog extends Component {
     }
 
     render() {
-
+        let token = this.props.match.params.token
         return (
             <div id="blog">
                 <Slider
-                    titulo="Blog"
+                    titulo={"Resultados de la busqueda: " + token}
                     size="slider-small"></Slider>
 
                 <div className="center">
                     <div className="content">
-                        {/* listado de articulos de la api */}
-                        <h2 className="subheader">Listado de articulos</h2>
-                        <Articulos></Articulos>
-
+                        <Articulos
+                            token={token}></Articulos>
                     </div>
                     <Sidebar
                         blog={true}
                     ></Sidebar>
                 </div>
-            </div>
+            </div >
 
         )
     }
