@@ -87,6 +87,20 @@ body {
     transition: 300ms all;
 }
 
+.year-green {
+    background: green;
+    color: white !important;
+    text-align: center;
+    padding: .5em;
+    width: 115px;
+}
+.year-red {
+    background: red;
+    color: white !important;
+    text-align: center;
+    padding: .5em;
+    width: 115px;
+}
 .menu a:hover,
 .menu .active {
     color: var(--vue-color);
@@ -274,6 +288,7 @@ textarea:focus {
 
 .article-item .image-wrap img {
     height: 100%;
+    width: 100%;
     text-align: center;
 }
 
@@ -311,6 +326,7 @@ textarea:focus {
 .article-detail .image-wrap {
     float: none;
     width: 100%;
+
     height: 300px;
 }
 

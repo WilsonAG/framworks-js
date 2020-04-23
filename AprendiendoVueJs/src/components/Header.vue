@@ -22,7 +22,7 @@
             <router-link active-class="active" to="/formulario">Formulario</router-link>
           </li>
           <li>
-            <router-link active-class="active" to="/pagina/hola gg">Pagina 1</router-link>
+            <router-link active-class="active" to="/peliculas">Peliculas</router-link>
           </li>
           <li>
             <router-link
