@@ -1,0 +1,42 @@
+<template>
+  <header class="header">
+    <div class="center">
+      <!-- logo -->
+      <div class="logo">
+        <img src="../assets/logo.png" alt="Logo de la web" class="app-logo" />
+        <div class="brand">
+          <strong>Curso</strong>Vue
+        </div>
+      </div>
+      <!-- menu -->
+
+      <nav class="menu">
+        <ul>
+          <li>
+            <a href="index.html">Inicio</a>
+          </li>
+          <li>
+            <a href="blog.html">Blog</a>
+          </li>
+          <li>
+            <a href="form.html">Formulario</a>
+          </li>
+          <li>
+            <a href="#">Pagina 1</a>
+          </li>
+          <li>
+            <a href="#">Pagina 2</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+    <!-- limpiar flotantes -->
+    <div class="clearfix"></div>
+  </header>
+</template>
+
+<script>
+export default {
+  name: "Header"
+};
+</script>
