@@ -1,7 +1,9 @@
 <template>
-  <div class="hello">
-    <h1>{{msg}}</h1>
-    <h2>{{texto}}</h2>
+  <div class="content">
+    <div class="hello">
+      <h1>{{msg}}</h1>
+      <h2>{{texto}}</h2>
+    </div>
   </div>
 </template>
 
