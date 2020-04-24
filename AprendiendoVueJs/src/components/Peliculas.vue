@@ -3,13 +3,15 @@
     <div class="center">
       <section class="content">
         <h2 class="subheader">Peliculas</h2>
+        <div class="mis-datos" v-if="getData">
+          <p v-html="getData"></p>
+          <p>{{'minuscula' | mayusculas}}</p>
+        </div>
         <!-- listado de articulos -->
-        <p v-if="favorita">
-          Tu pelicula favorita es:
-          {{favorita.title}}
-        </p>
+        <p v-if="favorita">{{favorita.title | favorite('Estuvo genial!')}}</p>
+
         <div id="articles">
-          <div class v-for="pelicula in peliculas" :key="pelicula.title">
+          <div class v-for="pelicula in peliculasMayuscula" :key="pelicula.title">
             <Pelicula :pelicula="pelicula" @favorita="recibirFavorita" />
           </div>
         </div>
@@ -36,8 +38,31 @@ export default {
       this.favorita = pelicula;
     }
   },
+  computed: {
+    peliculasMayuscula() {
+      let pelis = [];
+      for (const peli of this.peliculas) {
+        peli.title = peli.title.toUpperCase();
+        pelis.push(peli);
+      }
+      return pelis;
+    },
+    getData() {
+      return `${this.nombre} <br/> ${this.apellido}`;
+    }
+  },
+  filters: {
+    mayusculas(value) {
+      return value.toUpperCase();
+    },
+    favorite(value, msg) {
+      return `Tu pelicula favorita es: ${value}, tu comentario es ${msg}`;
+    }
+  },
   data() {
     return {
+      nombre: "Wilson",
+      apellido: "Aguilar",
       favorita: null,
       peliculas: [
         {
