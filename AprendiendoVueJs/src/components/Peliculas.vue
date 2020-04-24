@@ -1,32 +1,44 @@
 <template>
-  <section class="content">
-    <h2 class="subheader">Peliculas</h2>
-    <!-- listado de articulos -->
-    <div id="articles">
-      <article class="article-item" v-for="pelicula in peliculas" :key="pelicula">
-        <div class="image-wrap">
-          <img :src="pelicula.image" :alt="pelicula.title" />
+  <div class="general">
+    <div class="center">
+      <section class="content">
+        <h2 class="subheader">Peliculas</h2>
+        <!-- listado de articulos -->
+        <p v-if="favorita">
+          Tu pelicula favorita es:
+          {{favorita.title}}
+        </p>
+        <div id="articles">
+          <div class v-for="pelicula in peliculas" :key="pelicula.title">
+            <Pelicula :pelicula="pelicula" @favorita="recibirFavorita" />
+          </div>
         </div>
-        <h2>{{pelicula.title}}</h2>
-        <span
-          class="date"
-          :class="{
-            'year-green': pelicula.year <= 2020,
-            'year-red': pelicula.year > 2020
-            }"
-        >{{pelicula.year}}</span>
-        <div class="clearfix"></div>
-      </article>
-      {{peliculas[0].title}}
+      </section>
+      <Sidebar />
     </div>
-  </section>
+    <div class="clearfix"></div>
+  </div>
 </template>
 
 <script>
+import Pelicula from "./Pelicula.vue";
+import Sidebar from "./Sidebar.vue";
+
 export default {
   name: "Peliculas",
+  components: {
+    Pelicula,
+    Sidebar
+  },
+  methods: {
+    recibirFavorita(pelicula) {
+      console.log(pelicula);
+      this.favorita = pelicula;
+    }
+  },
   data() {
     return {
+      favorita: null,
       peliculas: [
         {
           title: "Batman v Sups",
