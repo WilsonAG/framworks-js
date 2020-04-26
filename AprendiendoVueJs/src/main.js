@@ -9,9 +9,11 @@ import Formulario from "./components/Formulario.vue";
 import Pagina from "./components/Pagina.vue";
 import ErrorComponent from "./components/ErrorComponent.vue";
 import Peliculas from "./components/Peliculas.vue";
+import Vuelidate from "vuelidate";
 
 Vue.config.productionTip = false
 Vue.use(VueRouter);
+Vue.use(Vuelidate);
 
 const routes = [
     { path: '/', component: LastArticles },
