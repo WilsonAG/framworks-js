@@ -5,19 +5,8 @@
       <section class="content">
         <h2 class="subheader">ultimos articulos</h2>
         <!-- listado de articulos -->
-        <div id="articles">
-          <article class="article-item" id="article-item">
-            <div class="image-wrap">
-              <img
-                src="https://estaticos.muyinteresante.es/media/cache/1140x_thumb/uploads/images/gallery/5b755a235cafe886f57f0c61/golden-cachorro_0.jpg"
-              />
-            </div>
-            <h2>Articulo de prueba</h2>
-            <span class="date">Hace 5 minutos</span>
-            <a href="#">Leer mas</a>
-            <div class="clearfix"></div>
-          </article>
-        </div>
+        <Articles :articles="articles" />
+        <div id="articles"></div>
       </section>
       <Sidebar />
     </div>
@@ -28,12 +17,35 @@
 <script>
 import Sidebar from "./Sidebar.vue";
 import Slider from "./Slider.vue";
+import Articles from "./Articles.vue";
+import Axios from "axios";
+import Global from "../global";
 
 export default {
   name: "LastArticles",
   components: {
     Sidebar,
-    Slider
+    Slider,
+    Articles
+  },
+  mounted() {
+    this.getLastArticles();
+  },
+  methods: {
+    getLastArticles() {
+      Axios.get(Global.uri + "articles/3").then(res => {
+        if (res.data.status === "ok") {
+          this.articles = res.data.articles;
+        }
+
+        console.log(this.articles);
+      });
+    }
+  },
+  data() {
+    return {
+      articles: null
+    };
   }
 };
 </script>
